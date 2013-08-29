@@ -3,7 +3,7 @@ host = localhost
 username = user
 password = pass
 name = name
-sql = 
+sql = SELECT domain, wp_login, wp_pass FROM sites WHERE active = 1
 [logger]
 name = wplogger
 format = %(asctime)s %(levelname)s %(message)s
