@@ -1,3 +1,4 @@
+* Change script-look to python module
 * Automatic plugin update
 * Add more docs
 * Add upgrade form customization (locale, User-agent etc.)
