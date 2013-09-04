@@ -18,4 +18,10 @@ Open config/config.cfg and adapt to your environment.
 <pre>
     python update.py
 </pre>
+
+## TODO
+* Change script-look to python module
+* Automatic plugin update
+* Add more docs
+* Add upgrade form customization (locale, User-agent etc.)
     
