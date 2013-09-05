@@ -1,15 +1,7 @@
-import logging
-import urllib2
-import os
-import sys
-import ConfigParser
+#
+# Part of wpupdater package
+#
 
-def parse_config(config_file):
-    if not os.path.isfile(config_file):
-        return False
-    cfg_parse = ConfigParser.ConfigParser()
-    cfg_parse.read(config_file)
-    return cfg_parse
 
 def check_for_new_version():
     rt_code = False
@@ -25,11 +17,6 @@ def check_for_new_version():
         f.write(remote_md5)
         f.close()
     return rt_code
-
-class WPLoggerAdapter(logging.LoggerAdapter):
-    def process(self, msg, kwargs):
-        return '[%s] %s'%(self.extra['domain'], msg),kwargs
-
 
 class LoginException(Exception):
     def __init__(self, msg):

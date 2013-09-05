@@ -1,26 +1,25 @@
 # WPUpdater
 
-Script for updating WordPress via wp-admin web panel. Based on lxml html parser and xpath. 
+WordPress updating tool. Contains command line script (wpupdate.py) for updating WordPress via wp-admin web panel. Based on lxml html parser and xpath. 
 
 ## Requirements
-To fulfill the requirements, simply run:
-<pre>
-    pip install -r requirements.txt
-</pre>
+Package depends on lxml library
+
 ## Configuration
-Project provides example configuration file. To configure, copy example file:
+
+Just install it by typing 
 <pre>
-    cp config/config.cfg.example config/config.cfg
+    python setup.py install
 </pre>
-Open config/config.cfg and adapt to your environment.
 
 ## Usage
+Executable script should be placed in $PATH directory. 
 <pre>
-    python update.py
+    wpupdate.py -l -u testuser -p testpassword www.mywordpress.com
 </pre>
 
 ## TODO
-* Change script-look to python module
+* ~~Change script-look to python module~~
 * Automatic plugin update
 * Add more docs
 * Add upgrade form customization (locale, User-agent etc.)

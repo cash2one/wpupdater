@@ -24,11 +24,11 @@ class WPBlog:
         if self.is_looged_in():
             self.logged_in = True
             return True
-        return False
+        raise LoginException('Login Error')
 
     def search_for_element_id(self, document_to_parse, element_id):
         document = lxml.html.document_fromstring(document_to_parse)
-        doc = document.xpath("//@id=%s"%element_id)
+        doc = document.xpath("//@id=\'%s\'"%element_id)
         if doc:
             return True
         return False
@@ -57,7 +57,6 @@ class WPBlog:
 
     @loggedin
     def admin_open(self, url, data = None):
-#        #print "Admin opening (http://www.%s%s)"%(self.domain, url)
         return self.opener.open('http://www.%s%s'%(self.domain, url), data)
 
     @loggedin
@@ -109,18 +108,14 @@ class WPBlog:
 
     @loggedin
     def upgrade(self, check=True):
-        #print "\t -> Starting upgrade"
         links_before = self.count_links()
         upgrade_page = self.admin_open(self.upgrade_page_url).read()
         form_to_upgrade = self.find_element_xpath(upgrade_page, "//form[contains(@action, 'do-core-upgrade') and @name=\"upgrade\"]")
         if not form_to_upgrade:
-            #print "\t -> No form to upgrade, skipping..."
             return False
-        #print "\t -> Sending upgrade form"
         self.send_upgrade_form(self.get_nonce_filed(form_to_upgrade[0]), self.get_upgrade_version(form_to_upgrade[0]))
         links_after = self.count_links()
         if links_before == links_after or (links_before0) == links_after or (links_before+1) == links_after:
             return True
-        print "\t\t\t Links After %s, Links Before %s"%(links_after, links_before)
         return False
 
